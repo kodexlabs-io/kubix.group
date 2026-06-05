@@ -1,0 +1,10 @@
+<svg width="176" height="176" viewBox="12 12 176 176" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Kubix double-hexagon K mark">
+  <polygon points="100,20 169.3,60 169.3,140 100,180 30.7,140 30.7,60"
+           fill="none" stroke="#6F5FD0" stroke-width="3" stroke-linejoin="round"/>
+  <polygon points="100,34 157.2,67 157.2,133 100,166 42.8,133 42.8,67"
+           fill="none" stroke="#6F5FD0" stroke-width="3" stroke-linejoin="round" opacity="0.7"/>
+
+  <text x="100" y="129" text-anchor="middle"
+        font-family="Helvetica, Arial, sans-serif" font-size="84" font-weight="600"
+        fill="#6F5FD0">K</text>
+</svg>
