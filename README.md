@@ -30,7 +30,19 @@ npm run format     # format with Prettier
 npm run format:check # verify formatting without writing
 ```
 
-The site is a client-rendered single-page app. UI text is available in English (UK) and Spanish via a language toggle; translations live in `src/lib/i18n.svelte.ts`.
+## Internationalisation
+
+The site is served as separate, statically generated pages per language so each URL carries its own SEO metadata:
+
+| Route | Language | Notes |
+| --- | --- | --- |
+| `/` | — | Redirects to the visitor's preferred language (`x-default`) |
+| `/en/` | English (UK) | `lang="en-GB"` |
+| `/es/` | Spanish | `lang="es"` |
+
+Each language page (`en/index.html`, `es/index.html`) declares its own translated `<title>`/description, a self-referencing `<link rel="canonical">`, and reciprocal `<link rel="alternate" hreflang>` tags (including `x-default`). Vite builds all three entry points (configured in `vite.config.ts`).
+
+The active language is resolved from the URL in `src/main.ts`; UI strings live in `src/lib/i18n.svelte.ts`, and the language switcher (`src/lib/LangSwitch.svelte`) navigates between the `/en/` and `/es/` routes.
 
 ## Code style
 

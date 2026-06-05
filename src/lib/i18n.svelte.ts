@@ -23,36 +23,10 @@ export const translations = {
     },
 } as const;
 
-const STORAGE_KEY = 'lang';
-
-/** Reactive language state shared across components. */
+/** Reactive language state, derived from the active route. */
 export const i18n = $state<{ lang: Lang }>({ lang: 'en' });
 
-/** Sets the active language, syncs the document and persists the choice. */
-export function setLang(lang: Lang): void {
-    i18n.lang = lang;
-    document.documentElement.lang = lang === 'es' ? 'es' : 'en-GB';
-    try {
-        localStorage.setItem(STORAGE_KEY, lang);
-    } catch {
-        /* storage unavailable */
-    }
-}
-
-/** Resolves the initial language from storage, then browser preference. */
-export function initLang(): void {
-    let stored: string | null = null;
-    try {
-        stored = localStorage.getItem(STORAGE_KEY);
-    } catch {
-        /* storage unavailable */
-    }
-
-    if (stored === 'en' || stored === 'es') {
-        setLang(stored);
-        return;
-    }
-
-    const browserEs = (navigator.language || '').toLowerCase().startsWith('es');
-    setLang(browserEs ? 'es' : 'en');
+/** Resolves the active language from a URL pathname (e.g. /es/ -> 'es'). */
+export function getLangFromPath(pathname: string): Lang {
+    return pathname.startsWith('/es') ? 'es' : 'en';
 }

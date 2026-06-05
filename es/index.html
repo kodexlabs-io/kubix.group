@@ -1,29 +1,22 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Kubix Inc.</title>
-        <link rel="canonical" href="https://kubix.group/en/" />
+        <title>Kubix Inc | Inicio</title>
+        <meta
+            name="description"
+            content="Kubix Inc. es una sociedad holding panameña propietaria de Kodex Labs Ltd (Reino Unido) y Kodex Labs S.R.L (República Dominicana)."
+        />
+        <link rel="canonical" href="https://kubix.group/es/" />
         <link rel="alternate" hreflang="en-GB" href="https://kubix.group/en/" />
         <link rel="alternate" hreflang="es" href="https://kubix.group/es/" />
         <link rel="alternate" hreflang="x-default" href="https://kubix.group/" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        <script>
-            (function () {
-                var prefersEs = (navigator.language || '').toLowerCase().indexOf('es') === 0;
-                location.replace(prefersEs ? '/es/' : '/en/');
-            })();
-        </script>
-        <noscript>
-            <meta http-equiv="refresh" content="0; url=/en/" />
-        </noscript>
     </head>
     <body>
-        <p>
-            Redirecting to
-            <a href="/en/">kubix.group/en</a>
-        </p>
+        <div id="app"></div>
+        <script type="module" src="/src/main.ts"></script>
     </body>
 </html>
