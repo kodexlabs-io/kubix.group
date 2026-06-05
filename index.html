@@ -85,6 +85,15 @@
                 margin-bottom: 2rem;
             }
 
+            .meta a {
+                color: var(--accent);
+                text-decoration: none;
+            }
+
+            .meta a:hover {
+                text-decoration: underline;
+            }
+
             p.intro {
                 color: var(--text-dim);
                 margin-bottom: 2rem;
@@ -230,12 +239,14 @@
                 />
                 <div>
                     <h1>Kubix Inc.</h1>
-                    <p
-                        class="meta"
-                        data-en="Panama 🇵🇦 · Company No. 155784730"
-                        data-es="Panamá 🇵🇦 · Sociedad N.º 155784730"
-                    >
-                        Panama 🇵🇦 &middot; Company No. 155784730
+                    <p class="meta">
+                        <span
+                            data-en="Panama 🇵🇦 · Company No. 155784730 · "
+                            data-es="Panamá 🇵🇦 · Sociedad N.º 155784730 · "
+                            >Panama 🇵🇦 &middot; Company No. 155784730 &middot; </span
+                        ><a href="mailto:corporate@kubix.group"
+                            >corporate@kubix.group</a
+                        >
                     </p>
 
                     <p
