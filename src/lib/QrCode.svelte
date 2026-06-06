@@ -12,7 +12,10 @@
             color: { dark: '#3e7fc0cc', light: '#00000000' },
         })
             .then(result => (svg = result))
-            .catch(() => (svg = ''));
+            .catch(error => {
+                console.error('Failed to generate QR code SVG:', error);
+                svg = '';
+            });
     });
 </script>
 
