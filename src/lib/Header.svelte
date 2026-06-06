@@ -78,21 +78,26 @@
         .intro {
             display: flex;
             align-items: center;
-            gap: 1.25rem;
+            gap: 1rem;
         }
 
         .intro-qr {
             display: block;
             flex: 0 0 auto;
-            width: min(120px, 30vw);
+            width: clamp(76px, 22vw, 110px);
             order: 1;
         }
 
         .intro-qr :global(.qr) {
             width: 100%;
             height: auto;
-            padding: 0.75rem;
+            aspect-ratio: auto;
+            padding: 0.4rem;
             border-radius: 12px;
+        }
+
+        .intro-qr :global(.qr svg) {
+            height: auto;
         }
     }
 </style>
