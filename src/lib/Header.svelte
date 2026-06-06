@@ -6,6 +6,39 @@
     let { pageUrl }: { pageUrl: string } = $props();
 
     const t = $derived(translations[i18n.lang]);
+
+    let typed = $state('');
+    let typing = $state(false);
+
+    $effect(() => {
+        const full = t.intro;
+
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            typed = full;
+            typing = false;
+            return;
+        }
+
+        typed = '';
+        typing = true;
+        let i = 0;
+        let step: ReturnType<typeof setInterval>;
+
+        const start = setTimeout(() => {
+            step = setInterval(() => {
+                typed = full.slice(0, ++i);
+                if (i >= full.length) {
+                    clearInterval(step);
+                    typing = false;
+                }
+            }, 22);
+        }, 250);
+
+        return () => {
+            clearTimeout(start);
+            clearInterval(step);
+        };
+    });
 </script>
 
 <div class="header">
@@ -18,7 +51,14 @@
         </p>
         <p class="intro">
             <span class="intro-qr"><QrCode value={pageUrl} /></span>
-            {t.intro}
+            <span class="intro-text">
+                <span class="intro-sizer" aria-hidden="true">{t.intro}</span>
+                <span class="intro-typed" aria-hidden="true">
+                    {typed}
+                    <span class="caret" class:caret-hidden={!typing}></span>
+                </span>
+            </span>
+            <span class="sr-only">{t.intro}</span>
         </p>
     </div>
 </div>
@@ -68,6 +108,58 @@
     .intro {
         color: var(--text-dim);
         margin-bottom: 2rem;
+    }
+
+    .intro-text {
+        position: relative;
+        display: block;
+    }
+
+    .intro-sizer {
+        visibility: hidden;
+    }
+
+    .intro-typed {
+        position: absolute;
+        inset: 0;
+    }
+
+    .caret {
+        display: inline-block;
+        width: 2px;
+        height: 1.05em;
+        margin-left: 1px;
+        vertical-align: text-bottom;
+        background: var(--accent);
+        animation: caret-blink 1s steps(1, end) infinite;
+    }
+
+    .caret-hidden {
+        opacity: 0;
+        animation: none;
+    }
+
+    @keyframes caret-blink {
+        0%,
+        50% {
+            opacity: 1;
+        }
+        50.01%,
+        100% {
+            opacity: 0;
+        }
+    }
+
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
     }
 
     .intro-qr {
