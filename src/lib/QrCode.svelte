@@ -28,7 +28,7 @@
 
 <style>
     .qr {
-        height: var(--qr-size, 320px);
+        height: min(var(--qr-size, 9999px), 34vw);
         aspect-ratio: 1 / 1;
         display: flex;
         align-items: center;
@@ -47,7 +47,7 @@
         display: block;
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 992px) {
         .qr {
             height: auto;
             width: min(260px, 70vw);

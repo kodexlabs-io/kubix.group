@@ -33,9 +33,14 @@
         flex: 0 1 540px;
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 992px) {
         .layout {
             flex-direction: column;
+        }
+
+        .layout main {
+            flex: 0 0 auto;
+            width: 100%;
         }
     }
 </style>

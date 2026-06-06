@@ -17,7 +17,7 @@ export default {
                 'home',
                 'layout',
                 'metadata',
-                'styles',
+                'style',
                 'utils',
             ],
         ],
