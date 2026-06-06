@@ -22,6 +22,7 @@
     "lint": "eslint ${1:-.}",
     "format": "prettier --write --html-whitespace-sensitivity ignore ${1:-.}",
     "format:check": "prettier --check --html-whitespace-sensitivity ignore ${1:-.}",
+    "update-dates": "node .kodex/scripts/update-dates.mts",
     "prepare": "husky"
   },
   "devDependencies": {

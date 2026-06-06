@@ -1,1 +1,1 @@
-npx lint-staged
+node .kodex/scripts/update-dates.mts && npx lint-staged
