@@ -5,6 +5,16 @@
 
     let svg = $state('');
 
+    function handleClick(event: MouseEvent) {
+        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) {
+            return;
+        }
+        const target = new URL(value, location.href);
+        if (target.pathname === location.pathname) {
+            event.preventDefault();
+        }
+    }
+
     $effect(() => {
         QRCode.toString(value, {
             type: 'svg',
@@ -21,6 +31,7 @@
     style={size ? `--qr-size:${size}px` : ''}
     href={value}
     aria-label="QR code linking to this page"
+    onclick={handleClick}
 >
     <!-- eslint-disable-next-line svelte/no-at-html-tags -->
     {@html svg}
